@@ -5,10 +5,15 @@ import 'normalize.css';
 import knockout from 'knockout';
 
 
-class Course {
-  constructor(title, price) {
+class Todo {
+  constructor(title, value) {
     this.title = knockout.observable(title);
-    this.price = knockout.observable(price);
+    this.value = knockout.observable(value);
+    this.isChecked = knockout.observable(false);
+  }
+  as() {
+    this.isChecked = !this.isChecked;
+    console.log(this.isChecked);
   }
 }
 
@@ -17,22 +22,23 @@ class Customer {
     this.name = knockout.observable('Guest');
     this.location = knockout.observable('Moscow');
     this.info = knockout.computed(() => `Привет ${this.name()} из ${this.location()}`);
-    this.coursesList = knockout.observableArray([
-      new Course('hhh', 111),
-      new Course('aaa', 222),
-      new Course('bbbb', 333),
-      new Course('ccc', 100),
+    this.todoList = knockout.observableArray([
+      new Todo('hhh', 111),
+      new Todo('aaa', 222),
+      new Todo('bbbb', 333),
+      new Todo('ccc', 100),
     ]);
   }
 
-  getName() {
-    const name = prompt('как вас зовут', this.name());
-    this.name(name);
+  doSomething(model) {
+    // todo переделать
+    this.todoList.push(new Todo(model.title.value, model.value.value));
+    model.title.value = '';
+    model.value.value = '';
+    componentHandler.upgradeDom();
   }
-
-  getLocation() {
-    const location = prompt('location', this.location());
-    this.location(location);
+  deleteTodo(todo) {
+    this.todoList.remove(todo);
   }
 }
 
