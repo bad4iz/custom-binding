@@ -16,10 +16,11 @@ block main
 	main.mdl-layout__content
 		.mdl-grid
 			.mdl-cell.mdl-cell--6-col
+				p сортировка по вессу задачи и названию (кликнуть по заголовку таблицы)
 				table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
 					thead
-						th.mdl-data-table__cell--non-numeric(data-bind='click:sortTitle') Задача
-						th(data-bind='click:sortGravity , css: {sss: sortGravityFlag<0 }') Вес задачи
+						th.mdl-data-table__cell--non-numeric(data-bind='click:sortTitle , css: {"mdl-data-table__header--sorted-ascending": sortTitleFlag() > 0 ,"mdl-data-table__header--sorted-descending": sortTitleFlag() < 0 }') Задача
+						th(data-bind='click:sortGravity , css: {"mdl-data-table__header--sorted-ascending": sortGravityFlag() > 0 ,"mdl-data-table__header--sorted-descending": sortGravityFlag() < 0 }') Вес задачи
 						th сделано
 						th удалить
 					tbody(data-bind='foreach:todoList')
