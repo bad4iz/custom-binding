@@ -1,0 +1,23 @@
+{
+  "name": "custom-binding.git",
+  "version": "1.0.0",
+  "description": "1) Необходимо разработать custom binding для knockout (http://knockoutjs.com), который позволяет рисовать данные в табличном виде. Из ViewModel необходимо передавать в binding как минимум данные о колонах и строках и как максимум другие настройки таблицы по Вашему желанию. В своем custom binding вы должны использовать обычные HTML таблицы. 2) Внешний вид таблички на свое усмотрение. 3) Разработать component для knockout, с полями (например select, checkbox, text) и элементами управления, что бы показать, что ваш custom binding реагирует на изменение ViewModel(создание, редактирование, удаление). Для элементов управления используйте UI-элементы из своей любимой библиотеки. (например JQuery UI, YUI)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bad4iz/custom-binding.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bad4iz/custom-binding/issues"
+  },
+  "homepage": "https://github.com/bad4iz/custom-binding#readme",
+  "devDependencies": {
+    "knockout": "^3.4.2"
+  }
+}
