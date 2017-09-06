@@ -1,0 +1,18 @@
+extends ../base
+
+block title
+	index page
+block main
+	h1(data-bind="text:info")
+	button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored
+		i.material-icons add
+	button(data-bind="click:getName")= 'представтесь'
+	table
+		thead
+			tr
+				th Название
+				th Цена
+		tbody(data-bind='foreach:coursesList')
+			tr
+				td(data-bind='text:title')
+				td(data-bind='text :price')
