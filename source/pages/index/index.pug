@@ -18,14 +18,14 @@ block main
 			.mdl-cell.mdl-cell--6-col
 				table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
 					thead
-						th.mdl-data-table__cell--non-numeric Задача
-						th Вес задачи
+						th.mdl-data-table__cell--non-numeric(data-bind='click:sortTitle') Задача
+						th(data-bind='click:sortGravity') Вес задачи
 						th сделано
 						th удалить
 					tbody(data-bind='foreach:todoList')
 						tr(data-bind='css: {check: isChecked} ')
 							td(data-bind='text:title')
-							td(data-bind='text :value')
+							td(data-bind='text :gravity ')
 							td
 
 
@@ -45,11 +45,11 @@ block main
 							.mdl-grid
 								.mdl-cell.mdl-cell--6-col
 									.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-										input#sample3.mdl-textfield__input( type="text" name='title')
+										input#sample3.mdl-textfield__input( type="text" data-bind='value: title')
 										label.mdl-textfield__label( for="sample3")= "название..."
 								.mdl-cell.mdl-cell--6-col
 									.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-										input#sample4.mdl-textfield__input(name='value' type="text" pattern="-?[0-9]*(\.[0-9]+)?")
+										input#sample4.mdl-textfield__input(data-bind='value: gravity' type="text" pattern="-?[0-9]*(\.[0-9]+)?")
 										label.mdl-textfield__label( for="sample4") вес...
 										span.mdl-textfield__error не является числом!
 						.mdl-card__actions.mdl-card--border
