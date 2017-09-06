@@ -1,7 +1,6 @@
 import './index.scss';
 import 'normalize.css';
 
-import 'm'
 
 import knockout from 'knockout';
 

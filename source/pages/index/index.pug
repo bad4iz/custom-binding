@@ -1,14 +1,13 @@
 extends ../base
 
 block title
-	index page
+	='Custom binding'
 block main
 	h1(data-bind="text:info")
-	button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored
-		i.material-icons add
+
 	button(data-bind="click:getName")= 'представтесь'
 	table
-		thead
+		theadu
 			tr
 				th Название
 				th Цена
