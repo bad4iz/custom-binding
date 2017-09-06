@@ -11,9 +11,11 @@ class Todo {
     this.value = knockout.observable(value);
     this.isChecked = knockout.observable(false);
   }
-  as() {
-    this.isChecked = !this.isChecked;
-    console.log(this.isChecked);
+  check() {
+    this.isChecked(!this.isChecked());
+    componentHandler.upgradeDom();
+
+    console.log(this.isChecked());
   }
 }
 
@@ -28,20 +30,17 @@ class Customer {
       new Todo('bbbb', 333),
       new Todo('ccc', 100),
     ]);
+    this.deleteTodo = (todo) => {
+      this.todoList.remove(todo);
+    };
   }
 
   doSomething(model) {
-    // todo переделать
-    this.todoList.push(new Todo(model.title.value, model.value.value));
+    model.title.value && this.todoList.push(new Todo(model.title.value, model.value.value));
     model.title.value = '';
     model.value.value = '';
     componentHandler.upgradeDom();
   }
-  deleteTodo(todo) {
-    this.todoList.remove(todo);
-  }
 }
-
-
 knockout.applyBindings(new Customer());
 

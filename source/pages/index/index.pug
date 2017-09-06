@@ -27,19 +27,18 @@ block main
 							td(data-bind='text:title')
 							td(data-bind='text :value')
 							td
-								p(data-bind='text:isChecked')
-								label.mdl-switch.mdl-js-switch.mdl-js-ripple-effect(data-bind='click:as ,attr: {for:$index()+1 }')
-									input.mdl-switch__input(type="checkbox")(data-bind='text: , click:as ,attr: {id:$index()+1 }, attr: {checked:isChecked}')
+
+
+								label.mdl-switch.mdl-js-switch.mdl-js-ripple-effect(data-bind='click:check ,attr: {for:$index()+1 }, css: {"is-checked": isChecked}')
+									input.mdl-switch__input(type="checkbox" data-bind='attr: {id:$index()+1 }, checked: isChecked')
 									span.mdl-switch__label
-
-
 							td
-								button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(data-bind='click:  ') delete
+								button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(data-bind='click: $root.deleteTodo') delete
 
 
 
 			.mdl-cell.mdl-cell--6-col
-				form(data-bind='submit: {doSomething')
+				form(data-bind='submit:doSomething')
 					.demo-card-wide.mdl-card.mdl-shadow--2dp
 						.mdl-card__title Добавление
 						.mdl-card__supporting-text
