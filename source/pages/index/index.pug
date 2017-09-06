@@ -3,15 +3,29 @@ extends ../base
 block title
 	='Custom binding'
 block main
-	h1(data-bind="text:info")
+	header.mdl-layout__header
+		.mdl-layout__header-row
+			span.mdl-layout-title Custom binding
+			.mdl-layout-spacer
+			.mdl-textfield.mdl-js-textfield.mdl-textfield--expandable.mdl-textfield--floating-label.mdl-textfield--align-right
+				label.mdl-button.mdl-js-button.mdl-button--icon(for="fixed-header-drawer-exp")
+					i.material-icons search
+				.mdl-textfield__expandable-holder
+					input#fixed-header-drawer-exp.mdl-textfield__input(type="text" name="sample")
 
-	button(data-bind="click:getName")= 'представтесь'
-	table
-		theadu
-			tr
-				th Название
-				th Цена
-		tbody(data-bind='foreach:coursesList')
-			tr
-				td(data-bind='text:title')
-				td(data-bind='text :price')
+	main.mdl-layout__content
+		.mdl-grid
+			.mdl-cell.mdl-cell--6-col
+				table.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--2dp
+					thead
+						th.mdl-data-table__cell--non-numeric Material
+						th.mdl-data-table__header--sorted-ascending Quantity
+						th Unit price
+					tbody(data-bind='foreach:coursesList')
+						tr
+							td(data-bind='text:title')
+							td(data-bind='text :price')
+	footer.mdl-mega-footer
+		.mdl-mini-footer__left-section
+			.mdl-logo
+				a(href='https://github.com/bad4iz/custom-binding') больше на github

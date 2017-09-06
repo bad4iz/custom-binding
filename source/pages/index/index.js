@@ -21,7 +21,7 @@ class Customer {
       new Course('hhh', 111),
       new Course('aaa', 222),
       new Course('bbbb', 333),
-      new Course('ccc', 444),
+      new Course('ccc', 100),
     ]);
   }
 
