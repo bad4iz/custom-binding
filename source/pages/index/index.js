@@ -23,6 +23,7 @@ class Customer {
   constructor() {
     this.title = knockout.observable();
     this.gravity = knockout.observable();
+    this.sortGravityFlag = knockout.observable(0);
     this.todoList = knockout.observableArray([
       new Todo('hhh', 111),
       new Todo('aaa', 222),
@@ -34,11 +35,17 @@ class Customer {
     };
   }
   sortGravity() {
-    console.log(this.todoList.sort((one, two) => one.gravity - two.gravity));
-    console.log(65416556);
+    this.sortGravityFlag(this.sortGravityFlag() > 0 ? -1 : 1);
+    if ( this.sortGravityFlag() > 0 ) {
+      this.todoList = this.todoList.sort((one, two) => two.gravity() - one.gravity());
+    } else {
+      this.todoList = this.todoList.sort((one, two) => one.gravity() - two.gravity() );
+    }
+    console.log(this.sortGravityFlag());
+
   }
   sortTitle() {
-    console.log(5);
+    this.todoList= this.todoList.sort(function (left, right) { return left.title() == right.title() ? 0 : (left.title() < right.title() ? -1 : 1) });
   }
   doSomething() {
     this.title() && this.todoList.push(new Todo(this.title(), this.gravity()));

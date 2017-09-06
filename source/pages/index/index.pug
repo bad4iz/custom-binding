@@ -19,7 +19,7 @@ block main
 				table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
 					thead
 						th.mdl-data-table__cell--non-numeric(data-bind='click:sortTitle') Задача
-						th(data-bind='click:sortGravity') Вес задачи
+						th(data-bind='click:sortGravity , css: {sss: sortGravityFlag<0 }') Вес задачи
 						th сделано
 						th удалить
 					tbody(data-bind='foreach:todoList')
