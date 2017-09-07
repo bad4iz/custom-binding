@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <title>Custom binding
+    </title>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="./css/index.css" rel="stylesheet"></head>
+  <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row"><span class="mdl-layout-title">Custom binding</span>
+          <div class="mdl-layout-spacer"></div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp"><i class="material-icons">search</i></label>
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" id="fixed-header-drawer-exp" type="text" name="sort" data-bind="textInput:currentFilter">
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="mdl-layout__content">
+        <div class="mdl-grid">
+          <div class="demo-card-wide mdl-card mdl-shadow--2dp future">
+            <div class="mdl-card__title">
+              <h3>Фичи</h3>
+            </div>
+            <div class="mdl-card__supporting-text">
+              <div class="ul mdl-list">
+                <li class="mdl-list__item"><span class="mdl-list__item-primary-content"><i class="material-icons mdl-list__item-icon">check</i>сортировка по вессу задачи  (кликнуть по заголовку таблицы)</span></li>
+                <li class="mdl-list__item"><span class="mdl-list__item-primary-content"><i class="material-icons mdl-list__item-icon">check</i>сортировка по названию задачи (кликнуть по заголовку таблицы)</span></li>
+                <li class="mdl-list__item"><span class="mdl-list__item-primary-content"><i class="material-icons mdl-list__item-icon">check</i>живой поиск (в верху с права лупа)</span></li>
+                <li class="mdl-list__item"><span class="mdl-list__item-primary-content"><i class="material-icons mdl-list__item-icon">check</i>добавление задачи</span></li>
+              </div>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">to be continued...</div>
+          </div>
+        </div>
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--6-col">
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+              <thead>
+                <th class="mdl-data-table__cell--non-numeric" data-bind="click:sortTitle , css: {&quot;mdl-data-table__header--sorted-ascending&quot;: sortTitleFlag() &lt; 0 ,&quot;mdl-data-table__header--sorted-descending&quot;: sortTitleFlag() &gt; 0 }">Задача</th>
+                <th data-bind="click:sortGravity , css: {&quot;mdl-data-table__header--sorted-ascending&quot;: sortGravityFlag() &gt; 0 ,&quot;mdl-data-table__header--sorted-descending&quot;: sortGravityFlag() &lt; 0 }">Вес задачи</th>
+                <th>сделано</th>
+                <th>удалить</th>
+              </thead>
+              <tbody data-bind="foreach:filterTodo">
+                <tr data-bind="css: {check: isChecked} ">
+                  <td data-bind="text:title"></td>
+                  <td data-bind="text :gravity "></td>
+                  <td>
+                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" data-bind="click:check ,attr: {for:$index()+1 }, css: {&quot;is-checked&quot;: isChecked}">
+                      <input class="mdl-switch__input" type="checkbox" data-bind="attr: {id:$index()+1 }, checked: isChecked"><span class="mdl-switch__label"></span>
+                    </label>
+                  </td>
+                  <td>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-bind="click: $root.deleteTodo">delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="mdl-cell mdl-cell--6-col">
+            <form data-bind="submit:doSomething">
+              <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title">Добавление</div>
+                <div class="mdl-card__supporting-text">
+                  <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--6-col">
+                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" id="sample3" type="text" data-bind="value: title">
+                        <label class="mdl-textfield__label" for="sample3">название...</label>
+                      </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col">
+                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" id="sample4" data-bind="value: gravity" type="text" pattern="-?[0-9]*(.[0-9]+)?">
+                        <label class="mdl-textfield__label" for="sample4">вес...</label><span class="mdl-textfield__error">не является числом!</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">добавить</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+      <footer class="mdl-mega-footer">
+        <div class="mdl-mini-footer__left-section">
+          <div class="mdl-logo"><a href="https://github.com/bad4iz/custom-binding">больше на github</a></div>
+        </div>
+      </footer>
+    </div>
+  <script type="text/javascript" src="js/common.js"></script><script type="text/javascript" src="js/index.js"></script></body>
+</html>
