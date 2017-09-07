@@ -14,17 +14,38 @@ block main
 					input#fixed-header-drawer-exp.mdl-textfield__input(type="text" name="sort" data-bind="textInput:currentFilter")
 
 	main.mdl-layout__content
+
+		.mdl-grid
+			.demo-card-wide.mdl-card.mdl-shadow--2dp.future
+				.mdl-card__title
+					h3 Фичи
+				.mdl-card__supporting-text
+					.ul.mdl-list
+						li.mdl-list__item
+							span.mdl-list__item-primary-content
+								i.material-icons.mdl-list__item-icon check
+								= "сортировка по вессу задачи  (кликнуть по заголовку таблицы)"
+						li.mdl-list__item
+							span.mdl-list__item-primary-content
+								i.material-icons.mdl-list__item-icon check
+								= "сортировка по названию задачи (кликнуть по заголовку таблицы)"
+						li.mdl-list__item
+							span.mdl-list__item-primary-content
+								i.material-icons.mdl-list__item-icon check
+								= "живой поиск (в верху с права лупа)"
+						li.mdl-list__item
+							span.mdl-list__item-primary-content
+								i.material-icons.mdl-list__item-icon check
+								= "добавление задачи"
+				.mdl-card__actions.mdl-card--border to be continued...
+
 		.mdl-grid
 			.mdl-cell.mdl-cell--6-col
-				ul
-					li сортировка по вессу задачи  (кликнуть по заголовку таблицы)
-					li сортировка по названию задачи (кликнуть по заголовку таблицы)
-					li живой поиск (в верху с права лупа)
-					li добавление задачи
+
 
 				table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
 					thead
-						th.mdl-data-table__cell--non-numeric(data-bind='click:sortTitle , css: {"mdl-data-table__header--sorted-ascending": sortTitleFlag() > 0 ,"mdl-data-table__header--sorted-descending": sortTitleFlag() < 0 }') Задача
+						th.mdl-data-table__cell--non-numeric(data-bind='click:sortTitle , css: {"mdl-data-table__header--sorted-ascending": sortTitleFlag() < 0 ,"mdl-data-table__header--sorted-descending": sortTitleFlag() > 0 }') Задача
 						th(data-bind='click:sortGravity , css: {"mdl-data-table__header--sorted-ascending": sortGravityFlag() > 0 ,"mdl-data-table__header--sorted-descending": sortGravityFlag() < 0 }') Вес задачи
 						th сделано
 						th удалить
@@ -60,6 +81,8 @@ block main
 										span.mdl-textfield__error не является числом!
 						.mdl-card__actions.mdl-card--border
 							button.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored(type="submit") добавить
+
+
 	footer.mdl-mega-footer
 		.mdl-mini-footer__left-section
 			.mdl-logo

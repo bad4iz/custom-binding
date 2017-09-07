@@ -1,9 +1,7 @@
 import './index.scss';
 import 'normalize.css';
 
-
 import knockout from 'knockout';
-
 
 class Todo {
   constructor(title, gravity, isChecked = false) {
@@ -32,7 +30,6 @@ class Customer {
       if (!this.currentFilter()) {
         componentHandler.upgradeDom();
         return this.todoList();
-
       }
       return knockout.utils.arrayFilter(this.todoList(), todo => ~todo.title().indexOf(this.currentFilter()));
     });
