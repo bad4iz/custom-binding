@@ -11,19 +11,24 @@ block main
 				label.mdl-button.mdl-js-button.mdl-button--icon(for="fixed-header-drawer-exp")
 					i.material-icons search
 				.mdl-textfield__expandable-holder
-					input#fixed-header-drawer-exp.mdl-textfield__input(type="text" name="sample")
+					input#fixed-header-drawer-exp.mdl-textfield__input(type="text" name="sort" data-bind="textInput:currentFilter")
 
 	main.mdl-layout__content
 		.mdl-grid
 			.mdl-cell.mdl-cell--6-col
-				p сортировка по вессу задачи и названию (кликнуть по заголовку таблицы)
+				ul
+					li сортировка по вессу задачи  (кликнуть по заголовку таблицы)
+					li сортировка по названию задачи (кликнуть по заголовку таблицы)
+					li живой поиск (в верху с права лупа)
+					li добавление задачи
+
 				table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
 					thead
 						th.mdl-data-table__cell--non-numeric(data-bind='click:sortTitle , css: {"mdl-data-table__header--sorted-ascending": sortTitleFlag() > 0 ,"mdl-data-table__header--sorted-descending": sortTitleFlag() < 0 }') Задача
 						th(data-bind='click:sortGravity , css: {"mdl-data-table__header--sorted-ascending": sortGravityFlag() > 0 ,"mdl-data-table__header--sorted-descending": sortGravityFlag() < 0 }') Вес задачи
 						th сделано
 						th удалить
-					tbody(data-bind='foreach:todoList')
+					tbody(data-bind='foreach:filterTodo')
 						tr(data-bind='css: {check: isChecked} ')
 							td(data-bind='text:title')
 							td(data-bind='text :gravity ')
